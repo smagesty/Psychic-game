@@ -56,6 +56,7 @@ document.onkeydown = function (event) {
     if (letter === toGuess) {
         wins++;
         document.querySelector("#wins").innerHTML = wins;
+        alert("You guessed Correctly!" + " The correct answer was: " + toGuess);
         reset();
     }
 // if its not the correct letter... records loSS and documents it
