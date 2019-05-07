@@ -19,6 +19,22 @@ var updatetoGuess = function () {
 //the letters guessed by users
 var updateGuessesSoFar = function () {
     document.querySelector("#guesses-so-far").innerHTML = guessed.join(", ");
+
+// if/else statements to determine if user has guessed right answer 
+    //resets guesses and guessed leters, computer guesses reset and game starts again
+    // if (guessed === toGuess) {
+
+    //     wins++;
+    //     guessesLeft = 9;
+    //     document.getElementById("win").innerHTML = wins;
+
+    //     guessed = [];
+
+    //     toGuess = computer[Math.floor(Math.random() * computer.length)];
+    //     console.log(toGuess);
+    // }
+
+
 };
 // resets and calls function to run code again using variables we create above to update guesses
 var reset = function () {
@@ -28,19 +44,7 @@ var reset = function () {
     updateGuessesLeft();
     updateGuessesSoFar();
 };
-// start the game off when refreshed
-updatetoGuess();
-updateGuessesLeft();
-// letters clicked are received, makes them all lower case *not case sensitive*
-document.onkeydown = function (event) {
-    // ++ adds one -- erases one
-    guessesLeft--;
 
-    var letter = event.key.toLowerCase();     
-    guessed.push(letter);
-    updateGuessesLeft();
-    updateGuessesSoFar();
-    
 // for(i=0; i<10; i++){
 //     if(toGuess === guessed) {
 //         alert("You guessed correctly");
@@ -52,10 +56,24 @@ document.onkeydown = function (event) {
 //     };
 
 
+
+
+// letters clicked are received, makes them all lower case *not case sensitive*
+document.onkeydown = function (event) {
+    // ++ adds one -- erases one
+    guessesLeft--;
+
+    var letter = event.key.toLowerCase();     
+    guessed.push(letter);
+    updateGuessesLeft();
+    updateGuessesSoFar();
+
+
 // if win, records it and documents it
     if (letter === toGuess) {
         wins++;
         document.querySelector("#wins").innerHTML = wins;
+        //alert them they have won and the correct letter
         alert("You guessed Correctly!" + " The correct answer was: " + toGuess);
         reset();
     }
